@@ -1,0 +1,3 @@
+include: http://gitlab.yeepay.com/ci-build/build-runner/raw/master/build-template-2.0.yml
+variables:
+  PACKAGETYPE: "springboot"
