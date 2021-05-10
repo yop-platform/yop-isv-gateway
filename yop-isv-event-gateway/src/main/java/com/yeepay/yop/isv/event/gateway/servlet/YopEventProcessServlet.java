@@ -2,7 +2,6 @@ package com.yeepay.yop.isv.event.gateway.servlet;
 
 import com.yeepay.yop.isv.event.sdk.dto.YopEvent;
 import com.yeepay.yop.isv.event.sdk.dto.YopEventResult;
-import com.yeepay.yop.isv.event.sdk.enums.YopEventHandleStatus;
 import com.yeepay.yop.isv.event.sdk.exception.YopHandleException;
 import com.yeepay.yop.isv.event.sdk.handler.YopEventHandlerFactory;
 import com.yeepay.yop.isv.event.sdk.resolver.RequestResolver;
@@ -18,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * title: 通知接收servlet<br>
@@ -55,7 +55,7 @@ public class YopEventProcessServlet extends HttpServlet {
             YopEvent event;
             if (StringUtils.isNotEmpty(eventType)) {
                 throw new YopHandleException("当前版本不支持事件，请升级");
-//                event = eventRequestResolver.resolve(req);
+                // TODO event = eventRequestResolver.resolve(req);
             } else {
                 event = notifyRequestResolver.resolve(req);
             }
@@ -64,11 +64,13 @@ public class YopEventProcessServlet extends HttpServlet {
             if (null != notifyResult) {
                 respStr = notifyResult.toString();
             }
+            resp.getOutputStream().write(respStr.getBytes(StandardCharsets.UTF_8));
         } catch (Exception e) {
             LOGGER.error("error when handle yop event", e);
-            respStr = new YopEventResult(YopEventHandleStatus.Fail, e.getMessage()).toString();
+            resp.sendError(
+                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    e.getMessage());
         }
-        resp.getOutputStream().write(respStr.getBytes());
     }
 
 }
