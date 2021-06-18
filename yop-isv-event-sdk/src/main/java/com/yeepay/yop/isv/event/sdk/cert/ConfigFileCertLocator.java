@@ -53,7 +53,6 @@ public class ConfigFileCertLocator implements CertLocator {
             yopPublicKeyString = YopConstant.YOP_RSA_PUBLIC_KEY;
         }
         this.yopPublicKey = RSA.string2PublicKey(yopPublicKeyString);
-        this.yopPublicKey = yopPublicKey;
     }
 
     public void setIsvPrivateKeyMap(Map<String, List<String>> isvPrivateKeyStringMap) {
