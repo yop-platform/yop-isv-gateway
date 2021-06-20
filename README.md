@@ -39,7 +39,10 @@
 
 可以参考 com.yeepay.yop.isv.event.sdk.handler.impl.YopWildCardEventHandler 实现具体的事件处理逻辑。
 
-3.模块yop-isv-event-gateway目录下执行`mvn spring-boot:run`
+3.启动网关
+
+3.1 根目录下执行`mvn clean install -Dmaven.test.skip=true`编译打包
+3.2 模块yop-isv-event-gateway目录下执行`mvn spring-boot:run`启动网关
 
 4.测试方法
 
