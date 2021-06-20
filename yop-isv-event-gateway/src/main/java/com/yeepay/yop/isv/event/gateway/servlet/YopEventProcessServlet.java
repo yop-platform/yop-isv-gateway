@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -64,7 +65,9 @@ public class YopEventProcessServlet extends HttpServlet {
             if (null != notifyResult) {
                 respStr = notifyResult.toString();
             }
-            resp.getOutputStream().write(respStr.getBytes(StandardCharsets.UTF_8));
+            Charset charset = StandardCharsets.UTF_8;
+            resp.setContentType("text/plain;charset=" + charset.name());
+            resp.getOutputStream().write(respStr.getBytes(charset));
         } catch (Exception e) {
             LOGGER.error("error when handle yop event", e);
             resp.sendError(
