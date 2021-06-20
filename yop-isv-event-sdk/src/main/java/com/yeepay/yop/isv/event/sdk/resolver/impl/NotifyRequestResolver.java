@@ -78,12 +78,13 @@ public class NotifyRequestResolver implements RequestResolver {
     }
 
     private CertTypeEnum resolveCertType(String content) {
-        String[] args = content.split("\\$");
-        if (args.length == 4 && content.endsWith("$AES$SHA256")) {
-            return CertTypeEnum.RSA2048;
-        } else {
-            return null;
+        if (StringUtils.isNotBlank(content)) {
+            String[] args = content.split("\\$");
+            if (args.length == 4 && content.endsWith("$AES$SHA256")) {
+                return CertTypeEnum.RSA2048;
+            }
         }
+        return null;
     }
 
 }
