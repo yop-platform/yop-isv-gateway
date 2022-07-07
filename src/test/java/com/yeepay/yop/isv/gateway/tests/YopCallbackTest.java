@@ -39,7 +39,7 @@ public class YopCallbackTest extends WebApplicationTest {
                 .expectStatus().is2xxSuccessful()
                 .expectBody(String.class).consumeWith(result -> {
             String response = result.getResponseBody();
-            assertThat(response).isEqualTo("Success");
+            assertThat(response).isEqualTo("SUCCESS");
         });
     }
 
@@ -53,7 +53,7 @@ public class YopCallbackTest extends WebApplicationTest {
                 .expectStatus().is2xxSuccessful()
                 .expectBody(String.class).consumeWith(result -> {
             String response = result.getResponseBody();
-            assertThat(response).isEqualTo("Success");
+            assertThat(response).isEqualTo("SUCCESS");
         });
     }
 
@@ -73,7 +73,7 @@ public class YopCallbackTest extends WebApplicationTest {
                 .expectStatus().is2xxSuccessful()
                 .expectBody(String.class).consumeWith(result -> {
             String response = result.getResponseBody();
-            assertThat(response).isEqualTo("{\"result\":\"Success\"}");
+            assertThat(response).isEqualTo("{\"result\":\"SUCCESS\"}");
         });
     }
 
@@ -88,7 +88,7 @@ public class YopCallbackTest extends WebApplicationTest {
 //                .expectHeader().contentType(MediaType.APPLICATION_JSON)
                 .expectBody(String.class).consumeWith(result -> {
             String response = result.getResponseBody();
-            assertThat(response).isEqualTo("Fail, cause:no YopCallbackHandler found");
+            assertThat(response).isEqualTo("FAIL, cause:no YopCallbackHandler found");
         });
     }
 
