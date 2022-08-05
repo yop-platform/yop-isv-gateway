@@ -6,7 +6,7 @@ import com.yeepay.yop.sdk.http.YopContentType;
 import com.yeepay.yop.sdk.service.common.YopCallbackEngine;
 import com.yeepay.yop.sdk.service.common.callback.YopCallbackRequest;
 import com.yeepay.yop.sdk.service.common.callback.YopCallbackResponse;
-import com.yeepay.yop.sdk.utils.CharacterConstants;
+import com.yeepay.yop.sdk.constants.CharacterConstants;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
