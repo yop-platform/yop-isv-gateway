@@ -21,7 +21,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <yop-java-sdk.version>4.3.1</yop-java-sdk.version>
+        <yop-java-sdk.version>4.4.5</yop-java-sdk.version>
     </properties>
 
     <dependencies>
